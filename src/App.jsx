@@ -17,7 +17,7 @@ export const goods = [
 
 export const App = () => {
   const [selectedGood, setSelectedGood] = useState('Jam');
-  const handleSelect = (good) => setSelectedGood(good);
+  const handleSelect = good => setSelectedGood(good);
   const handleClear = () => setSelectedGood('');
   const handleRemove = () => setSelectedGood('');
 
@@ -48,7 +48,7 @@ export const App = () => {
                 className={isSelected ? 'has-background-success-light' : ''}
               >
                 <td>
-                  {isSelected ? (
+                  {isSelected && (
                     <button
                       data-cy="RemoveButton"
                       type="button"
@@ -57,7 +57,9 @@ export const App = () => {
                     >
                       -
                     </button>
-                  ) : (
+                  )}
+
+                  {!isSelected && (
                     <button
                       data-cy="AddButton"
                       type="button"
